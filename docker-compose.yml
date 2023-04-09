@@ -1,8 +1,8 @@
-version: '2'
+version: '3'
 
 services:
   spark:
-    image: docker.io/bitnami/spark:3.1.2
+    image: docker.io/bitnami/spark
     environment:
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
@@ -14,7 +14,7 @@ services:
     ports:
       - '127.0.0.1:8080:8080'
   spark-worker-1:
-    image: docker.io/bitnami/spark:3.1.2
+    image: docker.io/bitnami/spark
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark:7077
@@ -26,8 +26,11 @@ services:
       - SPARK_SSL_ENABLED=no
     volumes:
       - .:/app
+    depends_on:
+      - spark
   work-env:
-    image: docker.io/bitnami/spark:3.1.2
+    # image:  docker.io/bitnami/spark
+    build: .
     volumes:
       - .:/app
     command: tail -f /dev/null
@@ -35,3 +38,5 @@ services:
     working_dir: /app
     environment:
       PYTHONPATH: /opt/bitnami/spark/python:/opt/bitnami/spark/python/lib/py4j-0.10.9-src.zip
+    depends_on:
+      - spark

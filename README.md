@@ -56,5 +56,4 @@ Please update `run_s3.py` with s3 credentials (and endpoint if running own s3 se
 To properly provide credentials and other info like s3 endpoint, some ideas is to use [env vars](https://docs.python.org/3/library/os.html#os.environ) or [envfile](https://pypi.org/project/python-dotenv/). Please remember to add `.env` and related files to `.gitignore`
 
 ## Credits:
-* Bitnami for their easy to use [image](https://hub.docker.com/r/bitnami/spark/)
-* @dani8art for excellent [explaination](https://github.com/bitnami/bitnami-docker-spark/issues/18#issuecomment-700628676) how to connect to cluster from pyspark
+* @leriel for their [pyspark-easy-start](https://github.com/leriel/pyspark-easy-start) initial config
