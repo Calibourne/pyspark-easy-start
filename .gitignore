@@ -1,2 +1,4 @@
 *.csv
 testing/**
+out/**
+**/__pycache__/**
